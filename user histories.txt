@@ -1,0 +1,29 @@
+Como hóspede eu quero reservar uma suíte para quando eu chegar no hotel ter um quarto disponível para mim.
+
+Como recepcionista eu quero ter o controle de reservas realizadas por e-mail ou telefone para ter o controle de reservas e pode entrar em contato com os hóspedes se necessário.
+
+Como recepcionista quero cadastrar os quartos do hotel para poder gerenciar quais estarão disponíveis ou não.
+
+Como recepcionista eu quero cadastrar os hóspedes que chegam no hotel para poder fazer o check-in e indicar-lhe um quarto.
+
+Como recepcionista/bartender/camareira quero cadastrar as despesas do quarto para efetuar as cobranças das despesas no check-out do hóspede.
+
+Como recepcionista quero consultar o consumo do frigobar para caso o cliente quiser consultar seus gastos ou quando realizar o check-out.
+
+Como funcionário do hotel quero cadastrar o estoque de produtos para quando um produto for consumido seja baixado automaticamente do estoque.
+
+Como gerente do hotel quero que todos tenham acessos restritos a cada funcionalidade do sistema de acordo com seu cargo que dados confidenciais fiquem seguros.
+
+Como recepcionista quero consultar todos os gastos durante a hospedagem dos hóspedes para imprimir um extrato da conta no momento do check-out
+
+Como recepcionista quero poder registrar recados deixados para os hóspedes para poder informar os clientes.
+
+Como recepcionista quero registrar as solicitações de serviço de despertador para saber a hora de avisar os clientes a hora de acordar.
+
+Como gerente do hotel quero ter o controle financeiro dos pagamentos e recebimentos do hotel para melhor gerenciar o orçamento.
+
+Como gerente do hotel quero poder realizar o cadastro de controle de funcionários para poder consultar seus acessos e dados pessoais.
+
+
+Como gerente do hotel quero poder realizar o cadastro de controle de produtos e serviços para gerenciar pagamentos e recebimentos.
+
