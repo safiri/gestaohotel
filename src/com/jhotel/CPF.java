@@ -11,6 +11,7 @@ public class CPF extends Documento {
 
    @Override
    public String getNumeroComMascara() {
+      // Valida CPF
       Pattern padrao = Pattern.compile("[0-9]{2,3}?\\.[0-9]{3}?\\.[0-9]{3}?\\-[0-9]{2}?");
       Matcher pesquisa = padrao.matcher(getNumero());
 
