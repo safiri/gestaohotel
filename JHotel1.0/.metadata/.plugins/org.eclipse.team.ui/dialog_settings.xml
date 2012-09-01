@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<section name="Workbench">
-	<section name="ImportPSFDialog">
-		<item value="https://github.com/safiri/gestaohotel.git" key="previous_url"/>
-		<list key="urls">
-			<item value="https://github.com/safiri/gestaohotel.git"/>
-		</list>
-	</section>
-</section>
