@@ -1,4 +1,4 @@
-package com.jhotel;
+package com.jhotel.excecoes;
 
 public class QuartosOcupadosException extends Exception {
 

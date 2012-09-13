@@ -1,4 +1,4 @@
-package com.jhotel;
+package com.jhotel.documento;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

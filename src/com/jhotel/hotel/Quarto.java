@@ -1,13 +1,15 @@
-package com.jhotel;
+package com.jhotel.hotel;
 
 public class Quarto {
 
    private Integer numero;
    private Hospede hospede;
+   private Estoque estoque;
 
    public Quarto(Integer numero) {
       this.numero = numero;
       this.hospede = null;
+      this.estoque = new Estoque();
    }
 
    public Integer getNumero() {
@@ -26,6 +28,10 @@ public class Quarto {
       return getHospede() != null;
    }
 
+   public Estoque getEstoque() {
+      return this.estoque;
+   }
+   
    @Override
    public int hashCode() {
       final int prime = 31;
