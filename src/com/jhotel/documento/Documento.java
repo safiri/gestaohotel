@@ -1,4 +1,4 @@
-package com.jhotel;
+package com.jhotel.documento;
 
 public abstract class Documento {
 

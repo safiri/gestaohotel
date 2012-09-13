@@ -1,4 +1,6 @@
-package com.jhotel;
+package com.jhotel.pessoa;
+
+import com.jhotel.documento.CPF;
 
 public class PessoaFisica implements Pessoa {
 

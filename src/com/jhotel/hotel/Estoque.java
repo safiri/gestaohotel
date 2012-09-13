@@ -1,4 +1,4 @@
-package com.jhotel;
+package com.jhotel.hotel;
 
 import java.util.ArrayList;
 import java.util.HashMap;

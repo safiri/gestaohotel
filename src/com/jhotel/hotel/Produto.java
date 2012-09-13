@@ -1,4 +1,4 @@
-package com.jhotel;
+package com.jhotel.hotel;
 
 import java.math.BigDecimal;
 

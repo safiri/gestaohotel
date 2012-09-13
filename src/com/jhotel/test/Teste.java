@@ -1,6 +1,14 @@
-package com.jhotel;
+package com.jhotel.test;
 
 import java.math.BigDecimal;
+
+import com.jhotel.documento.CPF;
+import com.jhotel.excecoes.QuartosOcupadosException;
+import com.jhotel.hotel.Estoque;
+import com.jhotel.hotel.Hospede;
+import com.jhotel.hotel.Hotel;
+import com.jhotel.hotel.Produto;
+import com.jhotel.hotel.Quarto;
 
 public class Teste {
 
