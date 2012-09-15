@@ -1,7 +1,9 @@
-package com.jhotel;
+package com.jhotel.hotel;
 
 import java.util.Map;
 import java.util.HashMap;
+import com.jhotel.documento.Documento;
+import com.jhotel.excecoes.QuartosOcupadosException;
 
 public class Hotel {
 
@@ -9,13 +11,13 @@ public class Hotel {
    public Map<Integer, Quarto> quartos;
    private Map<Documento, Funcionario> funcionarios;
    private Estoque estoque;
-   
+
    public Hotel(String nome) {
       this.nome = nome;
       quartos = new HashMap<>();
       funcionarios = new HashMap<>();
       estoque = new Estoque();
-      
+
    }
 
    public String getNome() {
@@ -46,10 +48,8 @@ public class Hotel {
       hospede.setQuarto(quarto); // ?
    }
 
-public Estoque getEstoque() {
-	return estoque;
-}
-
-
+   public Estoque getEstoque() {
+      return estoque;
+   }
 
 }
