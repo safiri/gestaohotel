@@ -4,30 +4,39 @@ import com.jhotel.documento.CPF;
 
 public class PessoaFisica implements Pessoa {
 
-   private CPF cpf;
-   private String nome;
+   private final CPF cpf;
+   private RG rg;
+   private final String nome;
 
-   public PessoaFisica(CPF cpf, String nome) {
-      this.cpf = cpf;
+   public PessoaFisica(final String cpf, final String nome) {
+      this.cpf = new CPF(cpf);
       this.nome = nome;
    }
 
-   public CPF getCpf() {
+   public final CPF getCpf() {
       return cpf;
    }
 
    @Override
-   public String getNome() {
+   public final String getNome() {
       return nome;
    }
 
    @Override
-   public CPF getDocumento() {
+   public final CPF getDocumento() {
       return getCpf();
    }
 
+   public RG getRg() {
+      return rg;
+   }
+
+   public void setRg(RG rg) {
+      this.rg = rg;
+   }
+
    @Override
-   public int hashCode() {
+   public final int hashCode() {
       final int prime = 31;
       int result = 1;
       result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
@@ -35,7 +44,7 @@ public class PessoaFisica implements Pessoa {
    }
 
    @Override
-   public boolean equals(Object obj) {
+   public final boolean equals(Object obj) {
       if (this == obj) {
          return true;
       }
@@ -45,7 +54,7 @@ public class PessoaFisica implements Pessoa {
       if (getClass() != obj.getClass()) {
          return false;
       }
-      PessoaFisica other = (PessoaFisica) obj;
+      final PessoaFisica other = (PessoaFisica) obj;
       if (cpf == null) {
          if (other.cpf != null) {
             return false;

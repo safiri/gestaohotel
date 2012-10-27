@@ -1,2 +1,2 @@
-Projeto do curso de Pós Graduação em Engenharia e Gestão de Software Orientado a Objetos.
-Disciplina: Programação Orientada a Objetos.
+Projeto do curso de Pos Graduacao em Engenharia e Gestao de Software Orientado a Objetos.
+Disciplina: Programacao Orientada a Objetos.

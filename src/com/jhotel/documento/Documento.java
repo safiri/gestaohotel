@@ -2,26 +2,26 @@ package com.jhotel.documento;
 
 public abstract class Documento {
 
-   private String tipo;
-   private String numero;
+   private final String tipo;
+   private final String numero;
 
-   public Documento(String tipo, String numero) {
+   public Documento(final String tipo, final String numero) {
       this.tipo = tipo;
       this.numero = numero;
    }
 
-   public String getTipo() {
+   public final String getTipo() {
       return tipo;
    }
 
-   public String getNumero() {
+   public final String getNumero() {
       return numero;
    }
 
    public abstract String getNumeroComMascara();
 
    @Override
-   public int hashCode() {
+   public final int hashCode() {
       final int prime = 31;
       int result = 1;
       result = prime * result + ((numero == null) ? 0 : numero.hashCode());
@@ -30,14 +30,14 @@ public abstract class Documento {
    }
 
    @Override
-   public boolean equals(Object obj) {
+   public final boolean equals(Object obj) {
       if (this == obj)
          return true;
       if (obj == null)
          return false;
       if (getClass() != obj.getClass())
          return false;
-      Documento other = (Documento) obj;
+      final Documento other = (Documento) obj;
       if (numero == null) {
          if (other.numero != null)
             return false;
@@ -52,7 +52,7 @@ public abstract class Documento {
    }
 
    @Override
-   public String toString() {
+   public final String toString() {
       return getTipo() + ": " + getNumeroComMascara();
    }
 

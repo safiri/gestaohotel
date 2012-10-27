@@ -1,55 +1,25 @@
 package com.jhotel.hotel;
 
-import java.util.Map;
-import java.util.HashMap;
-import com.jhotel.documento.Documento;
-import com.jhotel.excecoes.QuartosOcupadosException;
+public final class Hotel {
 
-public class Hotel {
+   private final String nome;
+   private final ListaDeQuartos quartos;
 
-   private String nome;
-   public Map<Integer, Quarto> quartos;
-   private Map<Documento, Funcionario> funcionarios;
-   private Estoque estoque;
-
-   public Hotel(String nome) {
+   public Hotel(final String nome) {
       this.nome = nome;
-      quartos = new HashMap<>();
-      funcionarios = new HashMap<>();
-      estoque = new Estoque();
-
+      quartos = new ListaDeQuartos(this);
    }
 
-   public String getNome() {
+   public final String getNome() {
       return nome;
    }
 
-   public void adiciona(Quarto quarto) {
-      quartos.put(quarto.getNumero(), quarto);
+   public final ListaDeQuartos getQuartos() {
+      return quartos;
    }
 
-   public void adiciona(Funcionario funcionario) {
-      funcionario.setHotel(this);
-      funcionarios.put(funcionario.getCpf(), funcionario);
-   }
-
-   public Quarto buscaQuartoDisponivel() throws QuartosOcupadosException {
-      for (Quarto quarto : quartos.values()) {
-         if (!quarto.ocupado()) {
-            return quarto;
-         }
-      }
-      throw new QuartosOcupadosException();
-   }
-
-   public void hospeda(Hospede hospede) throws QuartosOcupadosException {
-      Quarto quarto = buscaQuartoDisponivel();
-      quarto.setHospede(hospede); // ?
-      hospede.setQuarto(quarto); // ?
-   }
-
-   public Estoque getEstoque() {
-      return estoque;
+   public final boolean temReservaDe(final String string) {
+      return false;
    }
 
 }

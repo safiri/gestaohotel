@@ -1,26 +1,27 @@
 package com.jhotel.documento;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+public final class CPF extends Documento {
 
-public class CPF extends Documento {
-
-   public CPF(String numero) {
+   public CPF(final String numero) {
       super("CPF", numero);
    }
 
-   @Override
-   public String getNumeroComMascara() {
+   /*private void validarCPF(String numero) throws CPFInvalidoException {
       // Valida CPF
       Pattern padrao = Pattern.compile("[0-9]{2,3}?\\.[0-9]{3}?\\.[0-9]{3}?\\-[0-9]{2}?");
       Matcher pesquisa = padrao.matcher(getNumero());
 
       if (pesquisa.matches()) {
-         return getNumero();
-      } else {
-         return getNumero().substring(0, 3) + "." + getNumero().substring(3, 6) + "." + getNumero().substring(6, 9)
-               + "-" + getNumero().substring(9, 11);
+         throw new CPFInvalidoException("CPF \"" + numero + "\" invalido!");
       }
+   }*/
+
+   @Override
+   public final String getNumeroComMascara() {
+      return getNumero().substring(0, 3) + "." +
+             getNumero().substring(3, 6) + "." +
+             getNumero().substring(6, 9) + "-" +
+             getNumero().substring(9, 11);
    }
 
 }

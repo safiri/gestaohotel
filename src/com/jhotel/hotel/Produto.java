@@ -2,38 +2,38 @@ package com.jhotel.hotel;
 
 import java.math.BigDecimal;
 
-public class Produto {
+public final class Produto {
 
-   private Integer codigo;
-   private String descricao;
-   private BigDecimal preco;
-   private Integer quantidade;
+   private final Integer codigo;
+   private final String descricao;
+   private final BigDecimal preco;
+   private final Integer quantidade;
 
-   public Produto(Integer codigo, String descricao, BigDecimal preco, Integer quantidade) {
+   public Produto(final Integer codigo, final String descricao, final BigDecimal preco, final Integer quantidade) {
       this.descricao = descricao;
       this.codigo = codigo;
       this.preco = preco;
       this.quantidade = quantidade;
    }
 
-   public Integer getCodigo() {
+   public final Integer getCodigo() {
       return codigo;
    }
 
-   public String getDescricao() {
+   public final String getDescricao() {
       return descricao;
    }
 
-   public BigDecimal getPreco() {
+   public final BigDecimal getPreco() {
       return preco;
    }
 
-   public Integer getQuantidade() {
+   public final Integer getQuantidade() {
       return quantidade;
    }
 
    @Override
-   public int hashCode() {
+   public final int hashCode() {
       final int prime = 31;
       int result = 1;
       result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
@@ -41,7 +41,7 @@ public class Produto {
    }
 
    @Override
-   public boolean equals(Object obj) {
+   public final boolean equals(Object obj) {
       if (this == obj) {
          return true;
       }
@@ -63,7 +63,7 @@ public class Produto {
    }
 
    @Override
-   public String toString() {
+   public final String toString() {
       return "Produto [codigo=" + codigo + ", descricao=" + descricao + ", preco=" + preco + ", quantidade="
             + quantidade + "]";
    }
