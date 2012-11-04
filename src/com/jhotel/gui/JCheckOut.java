@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.text.MaskFormatter;
 
+import com.jhotel.hotel.Consumo;
+import com.jhotel.hotel.ListaDeConsumo;
 import com.jhotel.hotel.Quarto;
 
 public class JCheckOut implements JTela {
@@ -36,7 +38,13 @@ public class JCheckOut implements JTela {
    private JTextField txt_telefone;
    private JTable table;
    private JTable table_1;
-
+   private JFormattedTextField txtEntrada;
+   private JFormattedTextField txtDiaria;
+   private JFormattedTextField txtSaida;
+   private JTextField txtApto;
+   private JLabel lblTotalConsumo;
+   private JLabel lblR;
+   
    public JCheckOut(JHotel owner, Quarto quarto) throws ParseException {
       this.owner = owner;
       this.quarto = quarto;
@@ -44,6 +52,33 @@ public class JCheckOut implements JTela {
    }
 
    public void mostraTela() {
+      txtEntrada.setText(quarto.getHospedagemAtual().getDataDeEntrada());
+      txtNome.setText(quarto.getHospedePrincipal().getNome());
+      txtCPF.setText(quarto.getHospedePrincipal().getCpf().getNumero());
+      txtRG.setText(quarto.getHospedePrincipal().getRg().getNumero());
+      txtEndereco.setText(quarto.getHospedagemAtual().getEndereco());
+      txt_telefone.setText(quarto.getHospedagemAtual().getTelefone());
+      txtDiaria.setText(quarto.getHospedagemAtual().getValorDiaria());
+      txtSaida.setText(quarto.getHospedagemAtual().getDataDeSaida());
+      txtApto.setText(quarto.getNumero().toString());
+
+      ListaDeConsumo consumos = quarto.getConsumos();
+      Consumo consumo;
+
+      Grade grade = new Grade(table_1);
+      grade.limpa();
+
+      double total = 0;
+
+      for (int i = 0; i < consumos.getQuantidade(); i++) {
+         consumo = consumos.getConsumo(i);
+         grade.adicionaLinha(consumo.getProduto(),
+               String.valueOf(consumo.getQuantidade()),
+               String.valueOf(consumo.getValor()));
+         total += consumo.getValor() * consumo.getQuantidade();
+      }
+
+      lblR.setText("R$ " + String.valueOf(total));
       jTela.setVisible(true);
    }
 
@@ -58,7 +93,7 @@ public class JCheckOut implements JTela {
       lblNewLabel.setBounds(25, 23, 125, 14);
       jTela.getContentPane().add(lblNewLabel);
 
-      final JFormattedTextField txtEntrada = new JFormattedTextField();
+      txtEntrada = new JFormattedTextField();
       txtEntrada.setFont(new Font("Tahoma", Font.BOLD, 11));
       txtEntrada.setForeground(new Color(0, 51, 102));
 
@@ -122,7 +157,7 @@ public class JCheckOut implements JTela {
       lblValorDiria.setBounds(25, 174, 125, 14);
       jTela.getContentPane().add(lblValorDiria);
 
-      final JFormattedTextField txtDiaria = new JFormattedTextField();
+      txtDiaria = new JFormattedTextField();
       txtDiaria.setBounds(131, 173, 97, 20);
       jTela.getContentPane().add(txtDiaria);
 
@@ -139,7 +174,7 @@ public class JCheckOut implements JTela {
       lblDataSadaPrevista.setBounds(279, 26, 112, 14);
       jTela.getContentPane().add(lblDataSadaPrevista);
 
-      final JFormattedTextField txtSaida = new JFormattedTextField();
+      txtSaida = new JFormattedTextField();
       txtSaida.setText("09/10/2012 21:55:44");
       txtSaida.setForeground(new Color(0, 51, 102));
       txtSaida.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -150,7 +185,7 @@ public class JCheckOut implements JTela {
       lblNDoQuarto.setBounds(317, 174, 87, 14);
       jTela.getContentPane().add(lblNDoQuarto);
 
-      final JTextField txtApto = new JTextField();
+      txtApto = new JTextField();
       txtApto.setText("TESTE");
       txtApto.setBounds(396, 171, 86, 20);
       jTela.getContentPane().add(txtApto);
@@ -177,6 +212,11 @@ public class JCheckOut implements JTela {
       final JButton btnConfirmar = new JButton("Confirmar");
       btnConfirmar.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent arg0) {
+            if (!Mensagem.confirma("Deseja dar CheckOut para o quarto " + quarto.getNumero())) {
+               return;
+            }
+            
+            CheckOut.finalizaHospedagem(quarto);
             owner.atualizaGrade();
             jTela.dispose();
          }
@@ -188,7 +228,7 @@ public class JCheckOut implements JTela {
       lblTotalDirias.setBounds(75, 378, 104, 14);
       jTela.getContentPane().add(lblTotalDirias);
 
-      final JLabel lblTotalConsumo = new JLabel("TOTAL CONSUMO");
+      lblTotalConsumo = new JLabel("TOTAL CONSUMO");
       lblTotalConsumo.setBounds(75, 403, 104, 14);
       jTela.getContentPane().add(lblTotalConsumo);
 
@@ -196,7 +236,7 @@ public class JCheckOut implements JTela {
       lblTotalGeral.setBounds(74, 429, 104, 14);
       jTela.getContentPane().add(lblTotalGeral);
 
-      final JLabel lblR = new JLabel("R$");
+      lblR = new JLabel("R$");
       lblR.setBounds(182, 378, 125, 14);
       jTela.getContentPane().add(lblR);
 

@@ -23,24 +23,26 @@ public final class Quarto {
    }
 
    public final Hospede getHospedePrincipal() {
-      if (hospedagens.getHospedagemAtual() == null) {
+      if (getHospedagemAtual() == null) {
          return null;
       }
-      return hospedagens.getHospedagemAtual().getHospede();
+      return getHospedagemAtual().getHospede();
    }
 
    public final List<PessoaFisica> getDependentes() {
-      if (hospedagens.getHospedagemAtual() == null) {
+      if (getHospedagemAtual() == null) {
          return null;
       }
-      return hospedagens.getHospedagemAtual().getDependentes();
+      return getHospedagemAtual().getDependentes();
    }
 
-   public final Hospedagem hospeda(final Hospede hospede, PessoaFisica... pessoaFisica) throws QuartoOcupadoException {
+   public final Hospedagem hospeda(final Hospede hospede,
+         PessoaFisica... pessoaFisica) throws QuartoOcupadoException {
       if (ocupado()) {
          throw new QuartoOcupadoException(this);
       }
-      Hospedagem hospedagem = new Hospedagem(hospede, Arrays.asList(pessoaFisica));
+      Hospedagem hospedagem = new Hospedagem(hospede,
+            Arrays.asList(pessoaFisica));
       hospedagens.adiciona(hospedagem);
       return hospedagem;
    }
@@ -49,9 +51,15 @@ public final class Quarto {
       hospedagens.adiciona(hospedagem);
    }
 
-   public final void reserva(final String nomeDoCliente, final DataUtil dataDaPrevisao) {
+   public void finalizaHospedagem() {
+      hospedagens.finalizaUltimaHospedagem();
+   }
+
+   public final void reserva(final String nomeDoCliente,
+         final DataUtil dataDaPrevisao) {
       final PessoaFisica pessoaFisica = new PessoaFisica("", nomeDoCliente);
-      final Reserva reserva = new Reserva(this, pessoaFisica, dataDaPrevisao, dataDaPrevisao);
+      final Reserva reserva = new Reserva(this, pessoaFisica, dataDaPrevisao,
+            dataDaPrevisao);
       reservas.adicionar(reserva);
    }
 
@@ -76,19 +84,22 @@ public final class Quarto {
    }
 
    public void novoConsumo(Consumo consumo) {
-      if (hospedagens.getHospedagemAtual() == null) {
+      if (getHospedagemAtual() == null) {
          return;
       }
-      hospedagens.getHospedagemAtual().getConsumos().adiciona(consumo);
+      getHospedagemAtual().getConsumos().adiciona(consumo);
    }
 
-
    public ListaDeConsumo getConsumos() {
-      if (hospedagens.getHospedagemAtual() == null) {
+      if (getHospedagemAtual() == null) {
          return null;
       }
 
-      return hospedagens.getHospedagemAtual().getConsumos();
+      return getHospedagemAtual().getConsumos();
+   }
+
+   public Hospedagem getHospedagemAtual() {
+      return hospedagens.getHospedagemAtual();
    }
 
    @Override
@@ -124,7 +135,8 @@ public final class Quarto {
    @Override
    public final String toString() {
       return new StringBuilder("Quarto: ").append(getNumero()).append(" - ")
-            .append(ocupado() ? getHospedePrincipal().toString() : "livre").toString();
+            .append(ocupado() ? getHospedePrincipal().toString() : "livre")
+            .toString();
    }
 
 }
